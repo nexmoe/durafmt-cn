@@ -1,4 +1,3 @@
-// Package durafmt formats time.Duration into a human readable format.
 package durafmt
 
 import (
@@ -11,7 +10,7 @@ import (
 )
 
 var (
-	units      = []string{"years", "weeks", "days", "hours", "minutes", "seconds", "milliseconds", "microseconds"}
+	units      = []string{"年", "周", "日", "小时", "分钟", "秒", "毫秒", "微秒"}
 	unitsShort = []string{"y", "w", "d", "h", "m", "s", "ms", "µs"}
 )
 
@@ -106,43 +105,43 @@ func (d *Durafmt) String() string {
 		shouldConvert = true
 	}
 
-	if d.limitUnit == "years" || shouldConvert {
+	if d.limitUnit == "年" || shouldConvert {
 		years = remainingSecondsToConvert / (365 * 24 * 3600 * 1000000)
 		remainingSecondsToConvert -= years * 365 * 24 * 3600 * 1000000
 		shouldConvert = true
 	}
 
-	if d.limitUnit == "weeks" || shouldConvert {
+	if d.limitUnit == "周" || shouldConvert {
 		weeks = remainingSecondsToConvert / (7 * 24 * 3600 * 1000000)
 		remainingSecondsToConvert -= weeks * 7 * 24 * 3600 * 1000000
 		shouldConvert = true
 	}
 
-	if d.limitUnit == "days" || shouldConvert {
+	if d.limitUnit == "日" || shouldConvert {
 		days = remainingSecondsToConvert / (24 * 3600 * 1000000)
 		remainingSecondsToConvert -= days * 24 * 3600 * 1000000
 		shouldConvert = true
 	}
 
-	if d.limitUnit == "hours" || shouldConvert {
+	if d.limitUnit == "小时" || shouldConvert {
 		hours = remainingSecondsToConvert / (3600 * 1000000)
 		remainingSecondsToConvert -= hours * 3600 * 1000000
 		shouldConvert = true
 	}
 
-	if d.limitUnit == "minutes" || shouldConvert {
+	if d.limitUnit == "分钟" || shouldConvert {
 		minutes = remainingSecondsToConvert / (60 * 1000000)
 		remainingSecondsToConvert -= minutes * 60 * 1000000
 		shouldConvert = true
 	}
 
-	if d.limitUnit == "seconds" || shouldConvert {
+	if d.limitUnit == "秒" || shouldConvert {
 		seconds = remainingSecondsToConvert / 1000000
 		remainingSecondsToConvert -= seconds * 1000000
 		shouldConvert = true
 	}
 
-	if d.limitUnit == "milliseconds" || shouldConvert {
+	if d.limitUnit == "毫秒" || shouldConvert {
 		milliseconds = remainingSecondsToConvert / 1000
 		remainingSecondsToConvert -= milliseconds * 1000
 	}
@@ -151,14 +150,14 @@ func (d *Durafmt) String() string {
 
 	// Create a map of the converted duration time.
 	durationMap := map[string]int64{
-		"microseconds": microseconds,
-		"milliseconds": milliseconds,
-		"seconds":      seconds,
-		"minutes":      minutes,
-		"hours":        hours,
-		"days":         days,
-		"weeks":        weeks,
-		"years":        years,
+		"微秒": microseconds,
+		"毫秒": milliseconds,
+		"秒":      seconds,
+		"分钟":      minutes,
+		"小时":        hours,
+		"天":         days,
+		"周":        weeks,
+		"年":        years,
 	}
 
 	// Construct duration string.
